@@ -1,0 +1,1 @@
+<? return redirect('http://www.dict.cc/?s=' . $id) ?>
