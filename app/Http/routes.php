@@ -1,5 +1,6 @@
 <?php
 
+use App\Photo;
 use App\Country;
 use App\Post;
 use App\User;
@@ -329,15 +330,24 @@ Route::get('user/photos', function(){
 });
 
 //Route::get('post/photos', function(){
-Route::get('post/{id}/photos', function($id){
+// Route::get('post/{id}/photos', function($id){
     
-    //$post = Post::find(1);
-    $post = Post::find($id);
+//     //$post = Post::find(1);
+//     $post = Post::find($id);
 
-    foreach($post->photos as $photo) {
+//     foreach($post->photos as $photo) {
     
-        echo $photo->path . "<br>";
-        // return $photo->path;
+//         echo $photo->path . "<br>";
+//         // return $photo->path;
     
-    }
+//     }
+// });
+
+// 11 / 73 Polymorphic realtion in the inverse
+Route::get('photo/{id}/post', function($id){
+    
+    $photo = Photo::findOrFail($id);
+    
+    return $photo->imageable;
+    
 });
